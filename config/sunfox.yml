@@ -4,6 +4,9 @@ imports:
     - { resource: 'nette-php71.yml' }
 
 parameters:
+    exclude_checkers:
+        # PSR2 exceptions
+        - 'PhpCsFixer\Fixer\Casing\LowercaseConstantsFixer'
     skip:
         # PSR2 exceptions
         PHP_CodeSniffer\Standards\Generic\Sniffs\PHP\LowerCaseConstantSniff.Found: ~
