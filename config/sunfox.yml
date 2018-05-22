@@ -42,9 +42,11 @@ services:
         elements:
             - method
             - property
-    # LineLength
-    Symplify\CodingStandard\Fixer\LineLength\BreakMethodArgumentsFixer: ~
-    Symplify\CodingStandard\Fixer\LineLength\BreakArrayListFixer: ~
+    # Line length
+    Symplify\CodingStandard\Fixer\LineLength\LineLengthFixer:
+        line_length: 120
+        break_long_lines: true
+        inline_short_lines: true
     # The uppercase MUST be used for PHP constants in phpdoc.
     Sunfox\CodingStandard\Fixer\Phpdoc\PhpdocConstantFixer: ~
     # Import namespaces
@@ -62,5 +64,7 @@ services:
     SlevomatCodingStandard\Sniffs\Classes\UnusedPrivateElementsSniff: ~
     # drop dead use namespaces
     PhpCsFixer\Fixer\Import\NoUnusedImportsFixer: ~
+    # drop unused public methods
+    #Symplify\CodingStandard\Sniffs\DeadCode\UnusedPublicMethodSniff: ~
     # Debug
     Symplify\CodingStandard\Sniffs\Debug\DebugFunctionCallSniff: ~
