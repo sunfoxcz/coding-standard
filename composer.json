@@ -3,11 +3,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.0",
-        "symplify/easy-coding-standard": "dev-master#fb94de01c15de5ebf289194ae4c8ee4c211a1ae0",
-        "symplify/better-reflection-docblock": "dev-master#9e81cde7a7259132c36210b97f68f2e80cdd4009",
-        "symplify/coding-standard": "dev-master#5deea2b17ab9495d900862568720b17f66505350",
-        "symplify/package-builder": "dev-master#37a05363386f1f6fb59910788cddd0d1e74ebe9b",
-        "symplify/token-runner": "dev-master#5f3713155762f6e8cc687c0552fa2c1984c8a942"
+        "symplify/easy-coding-standard": "dev-master"
     },
     "autoload": {
         "psr-4": {
