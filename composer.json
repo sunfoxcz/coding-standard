@@ -2,8 +2,8 @@
     "name": "sunfoxcz/coding-standard",
     "license": "MIT",
     "require": {
-        "php": "^7.0",
-        "symplify/easy-coding-standard": "dev-master"
+        "php": "^7.1",
+        "symplify/easy-coding-standard": "^4.3"
     },
     "autoload": {
         "psr-4": {
