@@ -1,5 +1,5 @@
-#parameters:
-#    indentation: tab
+parameters:
+    indentation: tab
 
 services:
     # Checkers bellow aim on 1:1 copy of https://nette.org/en/coding-standard
@@ -7,7 +7,7 @@ services:
     # General rules - https://nette.org/en/coding-standard#toc-general-rules
 
     # use tabs over spaces
-#    PHP_CodeSniffer\Standards\Generic\Sniffs\WhiteSpace\DisallowSpaceIndentSniff: ~
+    PHP_CodeSniffer\Standards\Generic\Sniffs\WhiteSpace\DisallowSpaceIndentSniff: ~
     # PHP code must use only UTF-8 without BOM
     PhpCsFixer\Fixer\Basic\EncodingFixer: ~
     # <?php opening tag
@@ -145,7 +145,7 @@ services:
         elements: [const, property]
 
     # Last property and 1st method should be separated by 2 spaces
-#    Symplify\CodingStandard\Fixer\ClassNotation\LastPropertyAndFirstMethodSeparationFixer: ~
+    Symplify\CodingStandard\Fixer\ClassNotation\LastPropertyAndFirstMethodSeparationFixer: ~
 
     # Control Statements - https://nette.org/en/coding-standard#toc-control-statements
 
