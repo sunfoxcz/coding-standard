@@ -1,15 +1,18 @@
 imports:
     - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/psr2.yml' }
     - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/php71.yml' }
-    - { resource: 'nette-php71.yml' }
+    - { resource: '%vendor_dir%/nette/coding-standard/coding-standard-php71.yml' }
 
 parameters:
     indentation: space
     exclude_checkers:
         # PSR2 exceptions
         - 'PhpCsFixer\Fixer\Casing\LowercaseConstantsFixer'
-        # Nette PHP 5.6 exceptions
+        # Nette exceptions
         - 'PhpCsFixer\Fixer\PhpTag\LinebreakAfterOpeningTagFixer'
+        - 'Nette\CodingStandard\Fixer\ClassNotation\LastPropertyAndFirstMethodSeparationFixer'
+        - 'Nette\CodingStandard\Sniffs\WhiteSpace\FunctionSpacingSniff'
+        - 'SlevomatCodingStandard\Sniffs\Commenting\RequireOneLinePropertyDocCommentSniff'
     skip:
         # PSR2 exceptions
         PHP_CodeSniffer\Standards\Generic\Sniffs\PHP\LowerCaseConstantSniff.Found: ~
@@ -19,7 +22,6 @@ parameters:
         PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ControlStructureSpacingSniff.SpacingBeforeClose: ~
         # Nette exceptions
         PHP_CodeSniffer\Standards\Generic\Sniffs\WhiteSpace\DisallowSpaceIndentSniff: ~
-        Symplify\CodingStandard\Fixer\ClassNotation\LastPropertyAndFirstMethodSeparationFixer: ~
 
 services:
     # ensure declare(strict_types=1); is on the same line as <?php
