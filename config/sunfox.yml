@@ -56,9 +56,8 @@ services:
     # The uppercase MUST be used for PHP constants in phpdoc.
     Sunfox\CodingStandard\Fixer\Phpdoc\PhpdocConstantFixer: ~
     # Import namespaces
-    Symplify\CodingStandard\Fixer\Import\ImportNamespacedNameFixer:
-        allow_single_names: true
-        include_doc_blocks: true
+    SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff:
+        allowFullyQualifiedGlobalClasses: true
     # Looks for unused imports from other namespaces.
     SlevomatCodingStandard\Sniffs\Namespaces\UnusedUsesSniff:
         searchAnnotations: true
