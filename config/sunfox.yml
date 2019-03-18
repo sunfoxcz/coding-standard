@@ -4,7 +4,7 @@ imports:
     - { resource: '%vendor_dir%/nette/coding-standard/coding-standard-php71.yml' }
 
 parameters:
-    indentation: space
+    indentation: spaces
     exclude_checkers:
         # PSR2 exceptions
         - 'PhpCsFixer\Fixer\Casing\LowercaseConstantsFixer'
