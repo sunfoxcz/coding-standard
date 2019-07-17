@@ -1,27 +1,23 @@
 imports:
-    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/psr2.yml' }
-    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/php71.yml' }
+    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/psr2.yaml' }
+    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/php71.yaml' }
     - { resource: '%vendor_dir%/nette/coding-standard/coding-standard-php71.yml' }
 
 parameters:
     indentation: spaces
     exclude_checkers:
-        # PSR2 exceptions
-        - 'PhpCsFixer\Fixer\Casing\LowercaseConstantsFixer'
-        # Nette exceptions
-        - 'PhpCsFixer\Fixer\PhpTag\LinebreakAfterOpeningTagFixer'
-        - 'Nette\CodingStandard\Fixer\ClassNotation\LastPropertyAndFirstMethodSeparationFixer'
-        - 'Nette\CodingStandard\Sniffs\WhiteSpace\FunctionSpacingSniff'
-        - 'SlevomatCodingStandard\Sniffs\Commenting\RequireOneLinePropertyDocCommentSniff'
     skip:
-        # PSR2 exceptions
+        Nette\CodingStandard\Fixer\ClassNotation\LastPropertyAndFirstMethodSeparationFixer: ~
+        Nette\CodingStandard\Sniffs\WhiteSpace\FunctionSpacingSniff: ~
         PHP_CodeSniffer\Standards\Generic\Sniffs\PHP\LowerCaseConstantSniff.Found: ~
+        PHP_CodeSniffer\Standards\Generic\Sniffs\WhiteSpace\DisallowSpaceIndentSniff: ~
         PHP_CodeSniffer\Standards\PSR2\Sniffs\ControlStructures\ControlStructureSpacingSniff.SpacingAfterOpenBrace: ~
         PHP_CodeSniffer\Standards\PSR2\Sniffs\Methods\FunctionCallSignatureSniff.MultipleArguments: ~
         PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ControlStructureSpacingSniff.SpacingAfterOpenBrace: ~
         PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ControlStructureSpacingSniff.SpacingBeforeClose: ~
-        # Nette exceptions
-        PHP_CodeSniffer\Standards\Generic\Sniffs\WhiteSpace\DisallowSpaceIndentSniff: ~
+        PhpCsFixer\Fixer\Casing\LowercaseConstantsFixer: ~
+        PhpCsFixer\Fixer\PhpTag\LinebreakAfterOpeningTagFixer: ~
+        SlevomatCodingStandard\Sniffs\Commenting\RequireOneLinePropertyDocCommentSniff: ~
 
 services:
     # ensure declare(strict_types=1); is on the same line as <?php
