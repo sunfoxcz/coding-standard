@@ -1,7 +1,7 @@
 imports:
-    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/psr2.yaml' }
-    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/php71.yaml' }
-    - { resource: '%vendor_dir%/nette/coding-standard/coding-standard-php71.yml' }
+    - { resource: '../../../symplify/easy-coding-standard/config/set/psr2.yaml' }
+    - { resource: '../../../symplify/easy-coding-standard/config/set/php71.yaml' }
+    - { resource: '../../../nette/coding-standard/coding-standard-php71.yml' }
 
 parameters:
     indentation: spaces
@@ -15,7 +15,6 @@ parameters:
         PHP_CodeSniffer\Standards\PSR2\Sniffs\Methods\FunctionCallSignatureSniff.MultipleArguments: ~
         PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ControlStructureSpacingSniff.SpacingAfterOpenBrace: ~
         PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ControlStructureSpacingSniff.SpacingBeforeClose: ~
-        PhpCsFixer\Fixer\Casing\LowercaseConstantsFixer: ~
         PhpCsFixer\Fixer\PhpTag\LinebreakAfterOpeningTagFixer: ~
         SlevomatCodingStandard\Sniffs\Commenting\RequireOneLinePropertyDocCommentSniff: ~
 
@@ -27,7 +26,8 @@ services:
     # require must use absolute path
     Symplify\CodingStandard\Fixer\ControlStructure\RequireFollowedByAbsolutePathFixer: ~
     # The PHP constants `TRUE`, `FALSE`, and `NULL` MUST be in upper case.
-    Sunfox\CodingStandard\Fixer\Casing\UppercaseConstantsFixer: ~
+    PhpCsFixer\Fixer\Casing\ConstantCaseFixer:
+        case: upper
     # Classes implementing an interface MUST be final.
     Symplify\CodingStandard\Fixer\Solid\FinalInterfaceFixer: ~
     # There MUST NOT be more than one constant or property declared per statement.
