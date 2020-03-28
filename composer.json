@@ -4,7 +4,7 @@
     "require": {
         "php": "^7.1",
         "symplify/easy-coding-standard": "^6.0.4",
-        "nette/coding-standard": "dev-master"
+        "nette/coding-standard": "^2.2"
     },
     "autoload": {
         "psr-4": {
