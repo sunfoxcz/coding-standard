@@ -35,7 +35,7 @@ final class ClassAndTraitVisibilityRequiredFixer extends AbstractFixer implement
         return $this->visibilityRequiredFixer->getDefinition();
     }
 
-    public function configure(?array $configuration = NULL): void
+    public function configure(?array $configuration = null): void
     {
         $this->configuration = $configuration;
         $this->visibilityRequiredFixer->configure($configuration);
@@ -49,7 +49,7 @@ final class ClassAndTraitVisibilityRequiredFixer extends AbstractFixer implement
          * and "applyFix()" is final, there is no other way round it.
          */
         $method = new ReflectionMethod($this->visibilityRequiredFixer, 'applyFix');
-        $method->setAccessible(TRUE);
+        $method->setAccessible(true);
         $method->invoke($this->visibilityRequiredFixer, $file, $tokens);
     }
 }

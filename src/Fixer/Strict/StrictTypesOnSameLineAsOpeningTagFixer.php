@@ -42,8 +42,8 @@ namespace SomeNamespace;'),
 
         $declareIndex = $tokens->getNextMeaningfulToken(0);
         $sequence = $this->getDeclareStrictTypeSequence();
-        $sequenceLocation = $tokens->findSequence($sequence, $declareIndex, NULL, FALSE);
-        if ($sequenceLocation === NULL) {
+        $sequenceLocation = $tokens->findSequence($sequence, $declareIndex, null, false);
+        if ($sequenceLocation === null) {
             // strict_types declaration not found
 
             return;
@@ -71,12 +71,12 @@ namespace SomeNamespace;'),
 
     public function supports(SplFileInfo $file): bool
     {
-        return TRUE;
+        return true;
     }
 
     public function isRisky(): bool
     {
-        return FALSE;
+        return false;
     }
 
     /**
@@ -84,13 +84,13 @@ namespace SomeNamespace;'),
      */
     private function getDeclareStrictTypeSequence()
     {
-        static $sequence = NULL;
+        static $sequence = null;
 
         // do not look for open tag, closing semicolon or empty lines;
         // - open tag is tested by isCandidate
         // - semicolon or end tag must be there to be valid PHP
         // - empty tokens and comments are dealt with later
-        if ($sequence === NULL) {
+        if ($sequence === null) {
             $sequence = [
                 new Token([T_DECLARE, 'declare']),
                 new Token('('),

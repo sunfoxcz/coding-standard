@@ -5,11 +5,9 @@ imports:
 
 parameters:
     indentation: spaces
-    exclude_checkers:
     skip:
         Nette\CodingStandard\Fixer\ClassNotation\LastPropertyAndFirstMethodSeparationFixer: ~
         Nette\CodingStandard\Sniffs\WhiteSpace\FunctionSpacingSniff: ~
-        PHP_CodeSniffer\Standards\Generic\Sniffs\PHP\LowerCaseConstantSniff.Found: ~
         PHP_CodeSniffer\Standards\Generic\Sniffs\WhiteSpace\DisallowSpaceIndentSniff: ~
         PHP_CodeSniffer\Standards\PSR2\Sniffs\ControlStructures\ControlStructureSpacingSniff.SpacingAfterOpenBrace: ~
         PHP_CodeSniffer\Standards\PSR2\Sniffs\Methods\FunctionCallSignatureSniff.MultipleArguments: ~
@@ -24,12 +22,9 @@ services:
     # empty line after declare(strict_types=1);
     Symplify\CodingStandard\Fixer\Strict\BlankLineAfterStrictTypesFixer: ~
     # require must use absolute path
-    Symplify\CodingStandard\Fixer\ControlStructure\RequireFollowedByAbsolutePathFixer: ~
-    # The PHP constants `TRUE`, `FALSE`, and `NULL` MUST be in upper case.
-    PhpCsFixer\Fixer\Casing\ConstantCaseFixer:
-        case: upper
+    #Symplify\CodingStandard\Fixer\ControlStructure\RequireFollowedByAbsolutePathFixer: ~
     # Classes implementing an interface MUST be final.
-    Symplify\CodingStandard\Fixer\Solid\FinalInterfaceFixer: ~
+    #Symplify\CodingStandard\Fixer\Solid\FinalInterfaceFixer: ~
     # There MUST NOT be more than one constant or property declared per statement.
     PhpCsFixer\Fixer\ClassNotation\SingleClassElementPerStatementFixer:
         elements:
@@ -38,7 +33,7 @@ services:
     # final classes MUST NOT have protected properties
     PhpCsFixer\Fixer\ClassNotation\ProtectedToPrivateFixer: ~
     # set array property default value
-    Symplify\CodingStandard\Fixer\Property\ArrayPropertyDefaultValueFixer: ~
+    #Symplify\CodingStandard\Fixer\Property\ArrayPropertyDefaultValueFixer: ~
     # Last property and 1st method should be separated by 1 space
     PhpCsFixer\Fixer\ClassNotation\ClassAttributesSeparationFixer:
         elements:
@@ -60,7 +55,7 @@ services:
     # remove useless doc block comments
     Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer: ~
     Symplify\CodingStandard\Fixer\Commenting\RemoveSuperfluousDocBlockWhitespaceFixer: ~
-    Symplify\CodingStandard\Fixer\Commenting\RemoveEmptyDocBlockFixer: ~
+    PhpCsFixer\Fixer\Phpdoc\NoEmptyPhpdocFixer: ~
     # detect dead code
     SlevomatCodingStandard\Sniffs\Classes\UnusedPrivateElementsSniff: ~
     # drop dead use namespaces
@@ -68,4 +63,4 @@ services:
     # drop unused public methods
     #Symplify\CodingStandard\Sniffs\DeadCode\UnusedPublicMethodSniff: ~
     # Debug
-    Symplify\CodingStandard\Sniffs\Debug\DebugFunctionCallSniff: ~
+    Symplify\CodingStandard\Rules\NoDebugFuncCallRule: ~

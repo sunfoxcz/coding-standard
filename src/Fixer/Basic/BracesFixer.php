@@ -75,7 +75,7 @@ $positive = function ($item) { return $item >= 0; };
 $negative = function ($item) {
                 return $item < 0; };
 ',
-                    ['allow_single_line_closure' => TRUE]
+                    ['allow_single_line_closure' => true]
                 ),
                 new CodeSample(
                     '<?php
@@ -126,7 +126,7 @@ class Foo
      */
     public function isCandidate(Tokens $tokens)
     {
-        return TRUE;
+        return true;
     }
 
     /**
@@ -150,7 +150,7 @@ class Foo
         return new FixerConfigurationResolver([
             (new FixerOptionBuilder('allow_single_line_closure', 'Whether single line lambda notation should be allowed.'))
                 ->setAllowedTypes(['bool'])
-                ->setDefault(FALSE)
+                ->setDefault(false)
                 ->getOption(),
             (new FixerOptionBuilder('position_after_functions_and_oop_constructs', 'whether the opening brace should be placed on "next" or "same" line after classy constructs (non-anonymous classes, interfaces, traits, methods and non-lambda functions).'))
                 ->setAllowedValues([self::LINE_NEXT, self::LINE_SAME])
@@ -325,7 +325,7 @@ class Foo
 
             // fix indent near closing brace
             $endBraceNextNonWhitespaceIndex = $tokens->getNextNonWhitespace($endBraceIndex);
-            if ($endBraceNextNonWhitespaceIndex === NULL || !$tokens[$endBraceNextNonWhitespaceIndex]->isGivenKind([T_ELSE, T_ELSEIF, T_CATCH, T_FINALLY])) {
+            if ($endBraceNextNonWhitespaceIndex === null || !$tokens[$endBraceNextNonWhitespaceIndex]->isGivenKind([T_ELSE, T_ELSEIF, T_CATCH, T_FINALLY])) {
                 $tokens->ensureWhitespaceAtIndex($endBraceIndex - 1, 1, $this->whitespacesConfig->getLineEnding() . $indent);
             }
 
@@ -337,7 +337,7 @@ class Foo
                 $nestToken = $tokens[$nestIndex];
 
                 if ($nestToken->equals(')')) {
-                    $nestIndex = $tokens->findBlockEnd(Tokens::BLOCK_TYPE_PARENTHESIS_BRACE, $nestIndex, FALSE);
+                    $nestIndex = $tokens->findBlockEnd(Tokens::BLOCK_TYPE_PARENTHESIS_BRACE, $nestIndex, false);
                     continue;
                 }
 
@@ -430,12 +430,12 @@ class Foo
                 $tokens->ensureWhitespaceAtIndex($startBraceIndex - 1, 1, $ensuredWhitespace);
             } elseif ($token->isGivenKind(T_FUNCTION) && !$tokensAnalyzer->isLambda($index)) {
                 $closingParenthesisIndex = $tokens->getPrevTokenOfKind($startBraceIndex, [')']);
-                if ($closingParenthesisIndex === NULL) {
+                if ($closingParenthesisIndex === null) {
                     continue;
                 }
 
                 $prevToken = $tokens[$closingParenthesisIndex - 1];
-                if ($prevToken->isWhitespace() && strpos($prevToken->getContent(), "\n") !== FALSE) {
+                if ($prevToken->isWhitespace() && strpos($prevToken->getContent(), "\n") !== false) {
                     if (!$tokens[$startBraceIndex - 2]->isComment()) {
                         $tokens->ensureWhitespaceAtIndex($startBraceIndex - 1, 1, ' ');
                     }
@@ -535,16 +535,16 @@ class Foo
      */
     private function detectIndent(Tokens $tokens, $index)
     {
-        while (TRUE) {
+        while (true) {
             $whitespaceIndex = $tokens->getPrevTokenOfKind($index, [[T_WHITESPACE]]);
 
-            if ($whitespaceIndex === NULL) {
+            if ($whitespaceIndex === null) {
                 return '';
             }
 
             $whitespaceToken = $tokens[$whitespaceIndex];
 
-            if (strpos($whitespaceToken->getContent(), "\n") !== FALSE) {
+            if (strpos($whitespaceToken->getContent(), "\n") !== false) {
                 break;
             }
 
@@ -602,9 +602,9 @@ class Foo
             if ($nextToken->isGivenKind([T_IF, T_TRY, T_DO])) {
                 $openingTokenKind = $nextToken->getId();
 
-                while (TRUE) {
+                while (true) {
                     $nextIndex = $tokens->getNextMeaningfulToken($endIndex);
-                    $nextToken = isset($nextIndex) ? $tokens[$nextIndex] : NULL;
+                    $nextToken = isset($nextIndex) ? $tokens[$nextIndex] : null;
                     if ($nextToken && $nextToken->isGivenKind($this->getControlContinuationTokensForOpeningToken($openingTokenKind))) {
                         $parenthesisEndIndex = $this->findParenthesisEnd($tokens, $nextIndex);
 
@@ -624,7 +624,7 @@ class Foo
 
         $index = $parenthesisEndIndex;
 
-        while (TRUE) {
+        while (true) {
             $token = $tokens[++$index];
 
             // if there is some block in statement (eg lambda function) we need to skip it
@@ -762,11 +762,11 @@ class Foo
     private function isMultilined(Tokens $tokens, $startParenthesisIndex, $endParenthesisIndex)
     {
         for ($i = $startParenthesisIndex; $i < $endParenthesisIndex; ++$i) {
-            if (strpos($tokens[$i]->getContent(), "\n") !== FALSE) {
-                return TRUE;
+            if (strpos($tokens[$i]->getContent(), "\n") !== false) {
+                return true;
             }
         }
 
-        return FALSE;
+        return false;
     }
 }

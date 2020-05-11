@@ -52,7 +52,7 @@ final class FunctionSpacingSniff implements Sniff
             after the function.
         */
 
-        if (isset($tokens[$stackPtr]['scope_closer']) === FALSE) {
+        if (isset($tokens[$stackPtr]['scope_closer']) === false) {
             // Must be an interface method, so the closer is the semicolon.
             $closer = $phpcsFile->findNext(T_SEMICOLON, $stackPtr);
         } else {
@@ -75,8 +75,8 @@ final class FunctionSpacingSniff implements Sniff
             // should be done by an EOF sniff.
             $foundLines = $this->spacing;
         } else {
-            $nextContent = $phpcsFile->findNext(T_WHITESPACE, $nextLineToken, NULL, TRUE);
-            if ($nextContent === FALSE) {
+            $nextContent = $phpcsFile->findNext(T_WHITESPACE, $nextLineToken, null, true);
+            if ($nextContent === false) {
                 // We are at the end of the file.
                 // Don't check spacing after the function because this
                 // should be done by an EOF sniff.
@@ -104,7 +104,7 @@ final class FunctionSpacingSniff implements Sniff
             ];
 
             $fix = $phpcsFile->addFixableError($error, $closer, 'After', $data);
-            if ($fix === TRUE) {
+            if ($fix === true) {
                 $phpcsFile->fixer->beginChangeset();
                 for ($i = $nextLineToken; $i <= $nextContent; $i++) {
                     if ($tokens[$i]['line'] === $tokens[$nextContent]['line']) {
@@ -124,9 +124,9 @@ final class FunctionSpacingSniff implements Sniff
             before the function.
         */
 
-        $prevLineToken = NULL;
+        $prevLineToken = null;
         for ($i = $stackPtr; $i > 0; $i--) {
-            if (strpos($tokens[$i]['content'], $phpcsFile->eolChar) === FALSE) {
+            if (strpos($tokens[$i]['content'], $phpcsFile->eolChar) === false) {
                 continue;
             } else {
                 $prevLineToken = $i;
@@ -134,7 +134,7 @@ final class FunctionSpacingSniff implements Sniff
             }
         }
 
-        if (($prevLineToken === NULL) === TRUE) {
+        if (($prevLineToken === null) === true) {
             // Never found the previous line, which means
             // there are 0 blank lines before the function.
             $foundLines = 0;
@@ -142,7 +142,7 @@ final class FunctionSpacingSniff implements Sniff
         } else {
             $currentLine = $tokens[$stackPtr]['line'];
 
-            $prevContent = $phpcsFile->findPrevious(T_WHITESPACE, $prevLineToken, NULL, TRUE);
+            $prevContent = $phpcsFile->findPrevious(T_WHITESPACE, $prevLineToken, null, true);
             if ($tokens[$prevContent]['code'] === T_COMMENT) {
                 // Ignore comments as they can have different spacing rules, and this
                 // isn't a proper function comment anyway.
@@ -153,7 +153,7 @@ final class FunctionSpacingSniff implements Sniff
                 && $tokens[$prevContent]['line'] === ($currentLine - 1)
             ) {
                 // Account for function comments.
-                $prevContent = $phpcsFile->findPrevious(T_WHITESPACE, ($tokens[$prevContent]['comment_opener'] - 1), NULL, TRUE);
+                $prevContent = $phpcsFile->findPrevious(T_WHITESPACE, ($tokens[$prevContent]['comment_opener'] - 1), null, true);
             }
 
             if ($tokens[$prevContent]['code'] === T_OPEN_CURLY_BRACKET) {
@@ -172,7 +172,7 @@ final class FunctionSpacingSniff implements Sniff
             $i = ($stackPtr - 1);
             $foundLines = 0;
             while ($currentLine !== $prevLine && $currentLine > 1 && $i > 0) {
-                if (isset($tokens[$i]['scope_condition']) === TRUE) {
+                if (isset($tokens[$i]['scope_condition']) === true) {
                     $scopeCondition = $tokens[$i]['scope_condition'];
                     if ($tokens[$scopeCondition]['code'] === T_FUNCTION) {
                         // Found a previous function.
@@ -212,12 +212,12 @@ final class FunctionSpacingSniff implements Sniff
             ];
 
             $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Before', $data);
-            if ($fix === TRUE) {
+            if ($fix === true) {
                 if ($prevContent === 0) {
                     $nextSpace = 0;
                 } else {
                     $nextSpace = $phpcsFile->findNext(T_WHITESPACE, ($prevContent + 1), $stackPtr);
-                    if ($nextSpace === FALSE) {
+                    if ($nextSpace === false) {
                         $nextSpace = ($stackPtr - 1);
                     }
                 }
@@ -226,10 +226,10 @@ final class FunctionSpacingSniff implements Sniff
                     $padding = str_repeat($phpcsFile->eolChar, ($this->spacing - $foundLines));
                     $phpcsFile->fixer->addContent($nextSpace, $padding);
                 } else {
-                    $nextContent = $phpcsFile->findNext(T_WHITESPACE, ($nextSpace + 1), NULL, TRUE);
+                    $nextContent = $phpcsFile->findNext(T_WHITESPACE, ($nextSpace + 1), null, true);
                     $phpcsFile->fixer->beginChangeset();
                     for ($i = $nextSpace; $i < ($nextContent - 1); $i++) {
-                        if (strpos($tokens[$i]['content'], "\n") !== FALSE) {
+                        if (strpos($tokens[$i]['content'], "\n") !== false) {
                             $phpcsFile->fixer->replaceToken($i, '');
                         }
                     }

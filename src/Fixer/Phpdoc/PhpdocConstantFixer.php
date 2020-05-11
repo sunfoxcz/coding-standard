@@ -19,9 +19,9 @@ final class PhpdocConstantFixer extends AbstractPhpdocTypesFixer
      * @var string[]
      */
     private static $types = [
-        'FALSE',
-        'NULL',
-        'TRUE',
+        'false',
+        'null',
+        'true',
     ];
 
     /**
@@ -30,7 +30,7 @@ final class PhpdocConstantFixer extends AbstractPhpdocTypesFixer
     public function getDefinition()
     {
         return new FixerDefinition(
-            'The uppercase MUST be used for PHP constants in phpdoc.',
+            'The lowercase MUST be used for PHP constants in phpdoc.',
             [
                 new CodeSample(
                     '<?php
@@ -63,9 +63,9 @@ final class PhpdocConstantFixer extends AbstractPhpdocTypesFixer
      */
     protected function normalize($type)
     {
-        $upper = strtoupper($type);
+        $upper = strtolower($type);
 
-        if (in_array($upper, self::$types, TRUE)) {
+        if (in_array($upper, self::$types, true)) {
             return $upper;
         }
 
