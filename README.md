@@ -4,12 +4,12 @@ This is set of sniff and fixers combined under [EasyCodingStandard](https://gith
 
 ## Versions
 
-| Nette Coding Standard         | ^1.0   | ^2.0 |
-|-------------------------------|-------:|-----:|
-| PHP                           | ^7.1   | ^7.2 |
-| symplify/easy-coding-standard | ^6.0.4 | ^7.2 |
-| nette/coding-standard         | ^2.2   | ^2.3 |
-| slevomat/coding-standard      | 5.0.4  | ^6.0 |
+| Sunfox Coding Standard        | ^1.0   | ^2.0 |   dev-master |
+|:------------------------------|-------:|-----:|-------------:|
+| PHP                           | ^7.1   | ^7.2 | ^7.4 \|\| ^8.0 |
+| symplify/easy-coding-standard | ^6.0.4 | ^7.2 |           ^8.3 |
+| nette/coding-standard         | ^2.2   | ^2.3 |         ^3.0.1 |
+| slevomat/coding-standard      | 5.0.4  | ^6.0 |             ^6 |
 
 ## Installation
 
