@@ -4,8 +4,8 @@ This is set of sniff and fixers combined under [EasyCodingStandard](https://gith
 
 ## Versions
 
-| Sunfox Coding Standard        | ^1.0   | ^2.0 |   dev-master |
-|:------------------------------|-------:|-----:|-------------:|
+| Sunfox Coding Standard | [^1.0](https://github.com/sunfoxcz/coding-standard/tree/1.0.0) | [^2.0](https://github.com/sunfoxcz/coding-standard/tree/2.0.0) | dev-master |
+|:------------------------------|-------:|-----:|---------------:|
 | PHP                           | ^7.1   | ^7.2 | ^7.4 \|\| ^8.0 |
 | symplify/easy-coding-standard | ^6.0.4 | ^7.2 |           ^8.3 |
 | nette/coding-standard         | ^2.2   | ^2.3 |         ^3.0.1 |
@@ -14,28 +14,23 @@ This is set of sniff and fixers combined under [EasyCodingStandard](https://gith
 ## Installation
 
 ```bash
-composer require sunfoxcz/coding-standard:^2.0
+composer require sunfoxcz/coding-standard:dev-master
 ```
 
-## Example `ecs.yml`
+## Example `ecs.php`
 
-```yaml
-imports:
-    - { resource: 'vendor/sunfoxcz/coding-standard/config/sunfox.yml' }
+```php
+<?php declare(strict_types=1);
 
-parameters:
-    cache_directory: .ecs_cache
-    indentation: spaces
-    exclude_files:
-        - 'projects/*/temp/cache/*'
-        - 'projects/*/temp/proxies/*'
-    exclude_checkers:
-        - 'SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff'
-        - 'Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer'
-    skip:
-        PHP_CodeSniffer\Standards\PSR1\Sniffs\Methods\CamelCapsMethodNameSniff.NotCamelCaps: ~
-        SlevomatCodingStandard\Sniffs\Classes\UnusedPrivateElementsSniff.WriteOnlyProperty: ~
-        SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.MissingTraversableParameterTypeHintSpecification: ~
-        SlevomatCodingStandard\Sniffs\Classes\UnusedPrivateElementsSniff.UnusedProperty:
-            - 'app/Model/Entities/Pay.php'
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\EasyCodingStandard\ValueObject\Option;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $containerConfigurator->import(__DIR__ . '/vendor/sunfoxcz/coding-standard/config/sunfox.php');
+
+    $parameters = $containerConfigurator->parameters();
+    $parameters->set(Option::FILE_EXTENSIONS, ['php', 'phpt']);
+    $parameters->set(Option::CACHE_DIRECTORY, __DIR__ . '/.ecs_cache');
+};
+
 ```
