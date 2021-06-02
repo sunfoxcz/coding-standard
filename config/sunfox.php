@@ -11,6 +11,8 @@ use Symplify\EasyCodingStandard\ValueObject\Option;
 return function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import(__DIR__ . '/../../../symplify/easy-coding-standard/config/set/psr12.php');
     $containerConfigurator->import(__DIR__ . '/../../../nette/coding-standard/preset/php71.php');
+    $containerConfigurator->import(__DIR__ . '/../../../nette/coding-standard/preset/php73.php');
+    $containerConfigurator->import(__DIR__ . '/../../../nette/coding-standard/preset/php74.php');
 
     $parameters = $containerConfigurator->parameters();
     $parameters->set(Option::INDENTATION, Option::INDENTATION_SPACES);
