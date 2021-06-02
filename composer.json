@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.4 || ^8.0",
-        "nette/coding-standard": "^3.0.1"
+        "nette/coding-standard": "^3.1"
     },
     "autoload": {
         "psr-4": {
