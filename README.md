@@ -4,17 +4,17 @@ This is set of sniff and fixers combined under [EasyCodingStandard](https://gith
 
 ## Versions
 
-| Sunfox Coding Standard | [^1.0](https://github.com/sunfoxcz/coding-standard/tree/1.0.0) | [^2.0](https://github.com/sunfoxcz/coding-standard/tree/2.0.0) | dev-master |
+| Sunfox Coding Standard | [^1.0](https://github.com/sunfoxcz/coding-standard/tree/1.0.0) | [^2.0](https://github.com/sunfoxcz/coding-standard/tree/2.0.0) | [^3.0](https://github.com/sunfoxcz/coding-standard/tree/3.0.0) |
 |:------------------------------|-------:|-----:|---------------:|
 | PHP                           | ^7.1   | ^7.2 | ^7.4 \|\| ^8.0 |
-| symplify/easy-coding-standard | ^6.0.4 | ^7.2 |           ^8.3 |
-| nette/coding-standard         | ^2.2   | ^2.3 |         ^3.0.1 |
-| slevomat/coding-standard      | 5.0.4  | ^6.0 |             ^6 |
+| symplify/easy-coding-standard | ^6.0.4 | ^7.2 |           ^9.0 |
+| nette/coding-standard         | ^2.2   | ^2.3 |           ^3.1 |
+| slevomat/coding-standard      | 5.0.4  | ^6.0 |             ^7 |
 
 ## Installation
 
 ```bash
-composer require sunfoxcz/coding-standard:dev-master
+composer require sunfoxcz/coding-standard
 ```
 
 ## Example `ecs.php`
